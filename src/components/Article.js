@@ -1,24 +1,18 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import CommentList from './CommentList'
 
 export default class Article extends Component {
     state = {
         isOpen: false
     }
 
-/*
-    constructor() {
-        super()
-        this.state = {
-            isOpen: false
-        }
-    }
-*/
-
     render() {
-        const { article } = this.props
+        const {article} = this.props
+
         return (
             <div>
-                <h3 onClick = {this.toggleOpen}>{article.title}</h3>
+                <h4 onClick={this.toggleOpen} className="app-clickable">{article.title}</h4>
+
                 {this.getBody()}
             </div>
         )
@@ -32,10 +26,17 @@ export default class Article extends Component {
 
     getBody() {
         if (!this.state.isOpen) return null
+
+        const {article} = this.props
+
         return (
-            <section>
-                {this.props.article.text}
-            </section>
+            <div>
+                <p>
+                    {article.text}
+                </p>
+
+                <CommentList comments={article.comments}/>
+            </div>
         )
     }
 }
