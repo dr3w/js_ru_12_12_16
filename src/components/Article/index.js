@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import CommentList from '../CommentList'
+import CommentList from '../Comment/List'
+
 import CSSTransition from 'react-addons-css-transition-group'
 import './style.css'
 
@@ -20,11 +21,11 @@ export default class Article extends Component {
      */
 
     componentWillUpdate() {
-        console.log('---', 'updating article')
+        // console.log('---', 'updating article')
     }
 
     render() {
-        console.log('---', 123)
+        // console.log('---', 123)
         const { article, onClick } = this.props
         return (
             <div ref = "container">

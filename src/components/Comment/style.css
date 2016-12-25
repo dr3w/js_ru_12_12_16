@@ -1,0 +1,34 @@
+.comment-body-enter {
+    opacity: 0.01;
+}
+
+.comment-body-enter.comment-body-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.comment-body-leave {
+    opacity: 1;
+}
+
+.comment-body-leave.comment-body-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.comment-section {
+    margin: 20px auto 0;
+}
+
+input, textarea {
+    display: block;
+    margin: 10px auto;
+    padding: 4px;
+    width: 300px;
+}
+
+input[type=submit] {
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}

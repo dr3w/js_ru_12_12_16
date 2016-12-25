@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import CommentList from './CommentList'
+import CommentList from './Comment/List'
 import toggleOpen from '../mixins/toggleOpen'
 
 export default React.createClass({
