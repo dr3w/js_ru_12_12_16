@@ -6,36 +6,50 @@ class DayPickerComponent extends Component {
     static propTypes = {}
 
     state = {
-        selectedDay: new Date()
+        from: null,
+        to: null
     }
 
-    handleDayClick(e, day, {selected, disabled}) {
-        if (disabled) {
-            return
-        }
+    handleDayClick = (e, day) => {
+        const range = DateUtils.addDayToRange(day, this.state)
 
-        if (selected) {
-            this.setState({selectedDay: null})
-        } else {
-            this.setState({selectedDay: day})
-        }
+        this.setState(range)
+    }
+
+    handleResetClick = ev => {
+        ev && ev.preventDefault()
+
+        this.setState({
+            from: null,
+            to: null
+        })
     }
 
     printDate() {
-        return this.state.selectedDay && this.state.selectedDay.toString() || 'nada'
+        const {from, to} = this.state
+        let fromStr = from && from.toString()
+        let toStr = to && to.toString()
+
+        return from && to && `You have selected: ${fromStr} – ${toStr}`
     }
 
     render() {
+        const {from, to} = this.state
+
         return (
             <div>
                 <DayPicker
-                    initialMonth={new Date(this.state.selectedDay)}
-                    selectedDays={day => DateUtils.isSameDay(this.state.selectedDay, day)}
-                    onDayClick={this.handleDayClick.bind(this)}
+                    numberOfMonths={ 2 }
+                    selectedDays={ day => DateUtils.isDayInRange(day, { from, to }) }
+                    onDayClick={ this.handleDayClick }
                 />
 
                 <div>
-                    You have selected: {this.printDate()}
+                    {this.printDate()}
+                </div>
+
+                <div>
+                    <a href="#" onClick={ this.handleResetClick }>Reset</a>
                 </div>
             </div>
         )
@@ -43,3 +57,4 @@ class DayPickerComponent extends Component {
 }
 
 export default DayPickerComponent
+
