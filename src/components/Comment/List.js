@@ -17,10 +17,6 @@ class CommentList extends Component {
         comments: []
     }
 
-    state = {
-        comments: this.props.comments
-    }
-
     render() {
         return (
             <div>
@@ -37,8 +33,7 @@ class CommentList extends Component {
     }
 
     getBody() {
-        const {comments} = this.state
-        const {isOpen} = this.props
+        const {comments, isOpen} = this.props
         if (!isOpen) return null
         if (!comments.length) return <p>No comments yet</p>
 
@@ -61,9 +56,7 @@ class CommentList extends Component {
     }
 
     saveComment = (user, text) => {
-        this.setState({
-            comments: [...this.state.comments, {id: Date.now(), user, text}]
-        })
+        console.log(`Save comment:\n${user} – ${text}`);
     }
 }
 
