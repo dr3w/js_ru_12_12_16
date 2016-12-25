@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import Comment from './Comment'
-import AddComment from '../Comment/Add'
+import AddComment from './Add'
 import toggleOpen from '../../decorators/toggleOpen'
 
 import CSSTransition from 'react-addons-css-transition-group'
