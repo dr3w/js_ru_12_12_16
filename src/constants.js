@@ -1,3 +1,4 @@
 export const INCREMENT = 'INCREMENT'
-
 export const DELETE_ARTICLE = 'DELETE_ARTICLE'
+export const INPUT_FILTER = 'INPUT_FILTER'
+export const DATE_FILTER = 'DATE_FILTER'
