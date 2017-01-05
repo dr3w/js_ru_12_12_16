@@ -8,7 +8,6 @@ class ArticleList extends React.Component {
     render() {
         const {articles, isOpenItem, toggleOpenItem} = this.props
         const articleElements = articles.map(article => {
-
             if (!this.isDisplayArticle(article)) return
 
             return (
@@ -41,8 +40,8 @@ class ArticleList extends React.Component {
     }
 
     isFilteredById(id) {
-        return !this.props.inputFilter.length ||
-            this.props.inputFilter.some(article => article.value === id)
+        return !this.props.titleFilter.length ||
+            this.props.titleFilter.some(article => article.value === id)
     }
 
     isFilteredByDate(date) {
@@ -58,6 +57,8 @@ class ArticleList extends React.Component {
 
 ArticleList.propTypes = {
     articles: PropTypes.array.isRequired,
+    titleFilter: PropTypes.array.isRequired,
+    dateFilter: PropTypes.object.isRequired,
     isOpenItem: PropTypes.func.isRequired,
     toggleOpenItem: PropTypes.func.isRequired
 }
@@ -66,8 +67,8 @@ export default connect(
     (state) => {
         return {
             articles: state.articles,
-            inputFilter: state.inputFilter,
-            dateFilter: state.dateFilter
+            titleFilter: state.filter.title,
+            dateFilter: state.filter.date
         }
     }
 )(accordion(ArticleList))

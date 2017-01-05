@@ -1,12 +1,14 @@
 import React, {Component, PropTypes} from 'react'
 import Select from 'react-select'
 import {connect} from 'react-redux'
-import {filterByInput} from '../AC'
+import {filterByTitle} from '../AC'
 import 'react-select/dist/react-select.css'
 
 class ArticlesSelect extends Component {
     static propTypes = {
-        articles: PropTypes.array
+        articles: PropTypes.array,
+        titleFilter: PropTypes.array.isRequired,
+        filterByTitle: PropTypes.func.isRequired
     };
 
     render() {
@@ -16,13 +18,13 @@ class ArticlesSelect extends Component {
         }))
         return (
             <div>
-                <Select options={options} value={this.props.inputFilter} onChange={this.handleChange} multi={true}/>
+                <Select options={options} value={this.props.titleFilter} onChange={this.handleChange} multi={true}/>
             </div>
         )
     }
 
     handleChange = selected => {
-        this.props.filterByInput(selected)
+        this.props.filterByTitle(selected)
     }
 }
 
@@ -30,7 +32,7 @@ export default connect(
     (state) => {
         return {
             articles: state.articles,
-            inputFilter: state.inputFilter
+            titleFilter: state.filter.title
         }
-    }, {filterByInput}
+    }, {filterByTitle}
 )(ArticlesSelect)
