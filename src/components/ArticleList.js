@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 class ArticleList extends React.Component {
     render() {
         const {articles, isOpenItem, toggleOpenItem} = this.props
+        //логику фильтрации лучше делать в коннекте
         const articleElements = articles.map(article => {
             if (!this.isDisplayArticle(article)) return
 
