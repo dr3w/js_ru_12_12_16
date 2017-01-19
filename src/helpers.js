@@ -8,7 +8,7 @@ export function arrayToMap(arr, Model) {
 }
 
 export function mapToArray(immutableMap) {
-    return immutableMap.valueSeq().toArray()
+    return immutableMap && immutableMap.valueSeq().toArray()
 }
 
 export function generateRandomId() {

@@ -1,4 +1,4 @@
-import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, LOAD_ARTICLE, START, SUCCESS, FAIL } from '../constants'
+import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, LOAD_ARTICLE, LOAD_COMMENTS, START, SUCCESS, FAIL } from '../constants'
 import { arrayToMap } from '../helpers'
 import { Record, OrderedMap } from 'immutable'
 
