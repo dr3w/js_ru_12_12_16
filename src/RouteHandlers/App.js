@@ -17,6 +17,7 @@ class App extends Component {
                     <Menu>
                         <MenuItem path="/counter"/>
                         <MenuItem path="/articles"/>
+                        <MenuItem path="/comments"/>
                         <MenuItem path="/filters"/>
                     </Menu>
                     {this.props.children}
