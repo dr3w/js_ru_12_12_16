@@ -14,7 +14,8 @@ class CommentList extends Component {
     }
 
     static contextTypes = {
-        user: PropTypes.string
+        user: PropTypes.string,
+        i18n: PropTypes.object
     }
 
     componentWillReceiveProps({isOpen, article, loadArticleComments}) {
@@ -32,8 +33,10 @@ class CommentList extends Component {
     }
 
     getLink() {
+        const {i18n} = this.context
+
         return <a href="#" onClick = {this.props.toggleOpen}>
-            {this.props.isOpen ? 'hide' : 'show'} comments
+            {this.props.isOpen ? i18n.hide : i18n.show} {i18n.comments}
         </a>
     }
 

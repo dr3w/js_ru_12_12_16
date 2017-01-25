@@ -1,0 +1,9 @@
+{
+    "appTitle": "News App",
+    "menuTitle": "Select Type",
+    "articleListTitle": "Article List",
+    "comments": "comments",
+    "hide": "hide",
+    "show": "show",
+    "deleteArticle": "delete article"
+}

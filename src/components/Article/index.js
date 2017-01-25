@@ -15,7 +15,8 @@ class Article extends Component {
     }
 
     static contextTypes = {
-        router: PropTypes.object
+        router: PropTypes.object,
+        i18n: PropTypes.object
     }
 
     componentDidMount() {
@@ -31,13 +32,14 @@ class Article extends Component {
     }
 
     render() {
+        const { i18n } = this.context
         const { article, onClick } = this.props
         if (!article) return null
         return (
             <div ref = "container">
                 <h3 onClick = {onClick}>{article.title}</h3>
                 <div>
-                    <a href="#" onClick = {this.handleDelete}>delete article</a>
+                    <a href="#" onClick={this.handleDelete}>{i18n.deleteArticle}</a>
                 </div>
                 <CSSTransition
                     transitionName="article-body"
@@ -68,4 +70,4 @@ class Article extends Component {
 
 export default connect((state, props) => ({
     article: state.articles.getIn(['entities', props.id])
-}), { deleteArticle, loadArticleById })(Article)
+}), {deleteArticle, loadArticleById}, null, {pure: false})(Article)

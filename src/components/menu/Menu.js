@@ -5,10 +5,16 @@ class Menu extends Component {
 
     };
 
+    static contextTypes = {
+      i18n: PropTypes.object
+    }
+
     render() {
-        return (
+      const {i18n} = this.context
+
+      return (
             <div>
-                <h3>Select path</h3>
+                <h3>{i18n.menuTitle}</h3>
                 <ul>
                     {this.props.children}
                 </ul>

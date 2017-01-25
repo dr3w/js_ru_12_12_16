@@ -8,11 +8,16 @@ import { mapToArray } from '../helpers'
 import { loadAllArticles } from '../AC'
 
 class ArticleList extends React.Component {
+    static contextTypes = {
+        i18n: PropTypes.object
+    }
+    
     componentDidMount() {
         this.props.loadAllArticles()
     }
 
     render() {
+        const {i18n} = this.context
         const {articles, loading, isOpenItem, toggleOpenItem} = this.props
         const articleElements = articles.map(article =>
             <li key={article.id}>
@@ -21,7 +26,7 @@ class ArticleList extends React.Component {
         const loader = loading && <Loader />
         return (
             <div>
-                <h2>Article List</h2>
+                <h2>{i18n.articleListTitle}</h2>
                 <ul>
                     {/*some comment*/}
                     {articleElements}
