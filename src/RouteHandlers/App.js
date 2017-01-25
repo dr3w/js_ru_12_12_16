@@ -3,7 +3,12 @@ import store from '../store'
 import { Provider } from 'react-redux'
 import Menu from '../components/menu/Menu'
 import MenuItem from '../components/menu/MenuItem'
-import i18n from "../i18n/en-us.json";
+import {en, ru} from "../i18n";
+
+const i18n = {
+    en,
+    ru
+}
 
 class App extends Component {
     static propTypes = {
@@ -11,7 +16,8 @@ class App extends Component {
     };
 
     state = {
-        username: ''
+        username: '',
+        selectedLanguage: 'en'
     }
 
     static childContextTypes = {
@@ -22,12 +28,12 @@ class App extends Component {
     getChildContext() {
         return {
             user: this.state.username,
-            i18n: i18n
+            i18n: i18n[this.state.selectedLanguage]
         }
     }
 
     render() {
-        console.log('---', 'App')
+        console.log('---', this.state)
         return (
             <Provider store = {store}>
                 <div>
@@ -35,6 +41,13 @@ class App extends Component {
                     <div>
                         Input username:
                         <input type="text" value={this.state.username} onChange={this.handleChange}/>
+                    </div>
+                    <div>
+                        Select lang:
+                        <select name="lang" id="lang" onChange={this.changeLang}>
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                        </select>
                     </div>
                     <Menu>
                         <MenuItem path="/counter"/>
@@ -50,6 +63,12 @@ class App extends Component {
     handleChange = ev => {
         this.setState({
             username: ev.target.value
+        })
+    }
+
+    changeLang = ev => {
+        this.setState({
+            selectedLanguage: ev.target.value
         })
     }
 }
